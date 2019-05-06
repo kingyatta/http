@@ -21,7 +21,7 @@ class SwooleServerRequest extends ServerRequest
 {
     /**
      * @param swoole_http_request $request
-     * @return self
+     * @return static
      */
     public static function createServerRequestFromSwoole(swoole_http_request $request)
     {
