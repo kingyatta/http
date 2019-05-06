@@ -21,7 +21,7 @@ class SwooleServerRequest extends ServerRequest
 {
     /**
      * @param swoole_http_request $request
-     * @return static
+     * @return self
      */
     public static function createServerRequestFromSwoole(swoole_http_request $request)
     {
@@ -66,8 +66,8 @@ class SwooleServerRequest extends ServerRequest
         foreach ($request->header as $name => $value) {
             $headers[str_replace('-', '_', $name)] = $value;
         }
-
-        $serverRequest = new static(
+        $class = static::class;
+        $serverRequest = new $class(
             $server['REQUEST_METHOD'],
             static::createUriFromGlobal($server),
             $headers,
